@@ -33,8 +33,16 @@
 <a href="#18">18. 평균 점수</a><br/>
 <a href="#19">19. 제곱을 구하자</a><br/>
 <a href="#20">20. 몫과 나머지</a><br/>
-
----
+<a href="#21">21. set은 어떻게 만드나요?</a><br/>
+<a href="#22">22. 배수인지 확인하기</a><br/>
+<a href="#23">23. OX 문제</a><br/>
+<a href="#24">24. 대문자로 바꿔주세요!</a><br/>
+<a href="#25">25. 원의 넓이를 구하세요</a><br/>
+<a href="#26">26. 행성 문제 2</a><br/>
+<a href="#27">27. 객체 만들기</a><br/>
+<a href="#28">28. 2-gram</a><br/>
+<a href="#29">29. 대문자만 지나가세요</a><br/>
+<a href="#30">30. 문자열 속 문자 찾기</a><br/>
 
 <div id="1" />
 
@@ -56,8 +64,6 @@ nums.pop();
 nums.pop();
 ```
 
----
-
 <div id="2" />
 
 ### 문제 2 : 배열의 내장함수
@@ -78,8 +84,6 @@ console.log(arr);
 arr.splice(2, 0, 10000);
 ```
 
----
-
 <div id="3" />
 
 ### 문제 3 : 변수의 타입
@@ -96,8 +100,6 @@ console.log(typeof arr);
 3. number
 4. object O
 
----
-
 <div id="4" />
 
 ### 문제 4 : 변수의 타입 2
@@ -108,8 +110,6 @@ console.log(typeof arr);
 2. 입력 a = 2.22 출력: boolean O
 3. 입력 a = 'p' 출력: string
 4. 입력 a = [1,2,3] 출력: object
-
----
 
 <div id="5" />
 
@@ -128,8 +128,6 @@ console.log(a + b);
 
 답 : 16
 
----
-
 <div id="6" />
 
 ### 문제 6 : False
@@ -142,8 +140,6 @@ console.log(a + b);
 4. 0
 5. undefined
 
----
-
 <div id="7" />
 
 ### 문제 7 : 변수 명
@@ -155,8 +151,6 @@ console.log(a + b);
 3. let O
 4. \_age
 5. 1age O
-
----
 
 <div id="8" />
 
@@ -176,8 +170,6 @@ console.log(d["weight"]);
 ```
 
 답 : 84
-
----
 
 <div id="9" />
 
@@ -222,8 +214,6 @@ var result2 = year.concat(
 );
 ```
 
----
-
 <div id="10" />
 
 ### 문제 10 : 별 찍기
@@ -248,8 +238,6 @@ function tree(num) {
 tree(5);
 ```
 
----
-
 <div id="11" />
 
 ### 문제 11 : for를 이용한 기본 활용
@@ -268,8 +256,6 @@ for (let i = 1; i < 101; i++) {
 //pass
 console.log(s);
 ```
-
----
 
 <div id="12" />
 
@@ -307,8 +293,6 @@ console.log(x.health, x.mana, x.armor);
 x.attack();
 ```
 
----
-
 <div id="13" />
 
 ### 문제 13: 몇 번째 행성인가요?
@@ -326,8 +310,6 @@ const result = (num) => (num % 3 ? num : "짝");
 
 console.log(result(3));
 ```
-
----
 
 <div id="14" />
 
@@ -349,8 +331,6 @@ const result = (num) => planet[num - 1];
 console.log(result(1)); //수성
 ```
 
----
-
 <div id="15" />
 
 ### 문제 15 : 자기소개
@@ -365,8 +345,6 @@ console.log(result(1)); //수성
 const names = "김다정";
 console.log(`안녕하세요. 저는 ${names}입니다.`);
 ```
-
----
 
 <div id="16" />
 
@@ -384,8 +362,6 @@ const result = (str) => {
 console.log(result("hello"));
 ```
 
----
-
 <div id="17" />
 
 ### 문제17 : 놀이기구 키 제한
@@ -398,8 +374,6 @@ console.log(result("hello"));
 const result = (h) => (h > 150 ? "Yes" : "No");
 console.log(result(151));
 ```
-
----
 
 <div id="18" />
 
@@ -419,11 +393,9 @@ const result = (score) => {
 console.log(result("11 20 30"));
 ```
 
----
+<div id="19" />
 
 ### 문제 19 : 제곱을 구하자
-
-<div id="19" />
 
 공백으로 구분하여 두 숫자 a와 b가 주어지면, a의 b승을 구하는 프로그램을 작성하세요.
 
@@ -436,11 +408,9 @@ const result = (input) => {
 console.log(result("3 4"));
 ```
 
----
+<div id="20" />
 
 ### 문제 20 : 몫과 나머지
-
-<div id="20" />
 
 공백으로 구분하여 두 숫자가 주어집니다. 두번째 숫자로 첫번째 숫자를 나누었을 때 그 몫과 나머지를 공백으로 구분하여 출력하세요.
 
@@ -451,4 +421,145 @@ const result = (input) => {
 };
 
 console.log(result("11 2"));
+```
+
+<div id="21" />
+
+### 문제 21 : set은 어떻게 만드나요?
+
+다음 중 set을 만드는 방법으로 올바른 것을 모두 고르시오.
+
+1.  var x = {1, 2, 3, 5, 6, 7};
+2.  var x = {};
+3.  var x = new Set('javascript'); V
+4.  var x = new Set(range(5));
+5.  var x = new Set(); V
+
+<div id="22" />
+
+### 문제 22 : 배수인지 확인하기
+
+다음 중 변수 i가 6의 배수인지 확인하는 방법으로 올바른 것은?
+
+1.  i / 6 == 0
+2.  i % 6 == 0 V
+3.  i & 6 == 0
+4.  i | 6 == 0
+5.  i // 6 == 0
+
+<div id="23" />
+
+### 문제 23 : OX 문제
+
+console.log(10/3)의 출력 결과는 3 이다. X
+
+<div id="24" />
+
+### 문제 24 : 대문자로 바꿔주세요!
+
+민지는 국제 포럼에서 아르바이트를 하게 되었습니다. 민지는 각 국에서 온 참가자들의 명단을 엑셀로 정리하고 있는데 참가자들 이름이 어떤 이는 전부 소문자, 어떤 이는 전부 대문자로 써져 있는 등 형식이 제각각이었습니다. 민지를 위해 **이름이 입력되면 전부 대문자로 출력되는 프로그램**을 만들어주세요.
+
+```js
+const result = (Name) => Name.toUpperCase();
+console.log(result("hanmin"));
+```
+
+<div id="25" />
+
+### 문제 25 : 원의 넓이를 구하세요
+
+원의 넓이는 반지름의 길이 x 반지름의 길이 x 3.14로 구할 수 있습니다.
+함수를 사용하여 원의 넓이를 구하는 코드를 작성해봅시다.
+입력으로 반지름의 길이 정수 n이 주어지면 원의 넓이를 반환하는 함수를 만들어 주세요.
+
+```js
+const result = (r) => Math.PI * r * r;
+console.log(result(2));
+```
+
+<div id="26" />
+
+### 문제 26 : 행성 문제2
+
+우리 태양계를 이루는 행성은 수성, 금성, 지구, 화성, 목성, 토성, 천왕성, 해왕성이 있습니다. 이 행성들의 영어 이름은 Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune입니다. 행성의 한글 이름을 입력하면 영어 이름을 반환하는 프로그램을 만들어 주세요.
+
+```js
+const planets = {
+  수성: "Mercury",
+  금성: "Venus",
+  지구: "Earth",
+  화성: "Mars",
+  목성: "Jupiter",
+  토성: "Saturn",
+  천왕성: "Uranus",
+  해왕성: "Neptune",
+};
+
+console.log(planets["수성"]);
+```
+
+<div id="27" />
+
+### 문제 27 : 객체 만들기
+
+첫번째 입력에서는 학생의 이름이 공백으로 구분되어 입력되고, 두번째에는 그 학생의 수학 점수가 공백으로 구분되어 주어집니다.
+두 개를 합쳐 학생의 이름이 key이고 value가 수학 점수인 객체를 출력해주세요.
+
+```js
+const result = (NAME, score) => {
+  const names = NAME.split(" ");
+  const scores = score.split(" ");
+  const obj = {};
+  for (let i = 0; i < 2; i++) {
+    obj[names[i]] = scores[i] * 1;
+  }
+  return obj;
+};
+
+console.log(result("Yujin Hyewon", "70 100"));
+```
+
+<div id="28" />
+
+### 문제28 : 2-gram
+
+2-gram이란 문자열에서 2개의 연속된 요소를 출력하는 방법입니다.
+입력으로 문자열이 주어지면 **2-gram**으로 출력하는 프로그램을 작성해 주세요.
+
+```js
+const result = (str) => {
+  for (let i = 0; i < str.length - 1; i++) {
+    console.log(str[i], str[i + 1]);
+  }
+};
+
+result("Javascript");
+```
+
+<div id="29" />
+
+### 문제 29 : 대문자만 지나가세요
+
+진구는 영어 학원 아르바이트를 하고 있습니다. 반 아이들은 알파벳을 공부하는 학생들인데 오늘은 대문자 쓰기 시험을 봤습니다.
+**알파벳 하나만을 입력하고 그 알파벳이 대문자이면 YES를 아니면 NO를 출력하는 프로그램**을 만들어 주세요.
+
+```js
+const result = (alpabet) => (alpabet === alpabet.toUpperCase() ? "Yes" : "No");
+console.log(result("a"));
+```
+
+<div id="30" />
+
+### 문제30 : 문자열 속 문자 찾기
+
+문자 pineapple에는 apple이라는 문자가 숨어 있습니다. 원범이는 이렇듯 문자열 속에 숨어있는 문자를 찾아보려고 합니다.
+첫번째 입력에서는 문자열이 입력되고, 두번째에는 찾을 문자가 입력되어야 합니다.
+그 문자가 시작하는 index를 반환하는 프로그램을 만들어 주세요
+
+```js
+const result = (str, word) => {
+  console.log(str.indexOf(word));
+};
+
+result("pineapple is yummy", "apple");
 ```
