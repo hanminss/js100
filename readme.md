@@ -43,6 +43,8 @@
 <a href="#28">28. 2-gram</a><br/>
 <a href="#29">29. 대문자만 지나가세요</a><br/>
 <a href="#30">30. 문자열 속 문자 찾기</a><br/>
+<a href="#31">31. 자바스크립트 자료형의 복잡도</a><br/>
+<a href="#32">32. 문자열 만들기</a><br/>
 
 <div id="1" />
 
@@ -562,4 +564,233 @@ const result = (str, word) => {
 };
 
 result("pineapple is yummy", "apple");
+```
+
+<div id="31" />
+
+### 문제 31 : 자바스크립트 자료형의 복잡도
+
+다음 배열 내장함수의 시간 복잡도가 O(1)이 아닌 것을 모두 고르시오.
+
+1. arr[i] O(1)
+2. arr.push(5) O(1)
+3. arr.slice() v 배열이 커질수록 시간도 오래걸릴 것이다.
+4. arr.pop() O(1)
+5. arr.includes(5) v 배열이 커질수록 시간도 오래걸릴 것이다.
+
+<div id="32" />
+
+### 문제 32: 문자열 만들기
+
+취업 준비생인 혜림이는 자기 소개서를 쓰고 있습니다. 열심히 자기 소개서를 작성하던 도중 혜림이는 자기가 지금까지 단어를 얼마나 적었는지 궁금하게 됩니다.
+
+혜림이를 위해 문자열을 입력받으면 단어의 갯수를 출력하는 프로그램을 작성해 주세요.
+
+```js
+const result = (str) => str.split(" ").length;
+
+console.log(result("안녕하세요. 저는 제주대학교 컴퓨터공학전공 혜림입니다."));
+```
+
+<div id="33" />
+
+### 문제 33 : 거꾸로 출력하기
+
+한 줄에 여려개의 숫자가 입력되면, 역순으로 그 숫자들을 하나씩 출력하는 프로그램을 작성하시오.
+
+```js
+const result = (nums) => nums.split(" ").reverse().join(" ");
+
+console.log(result("1 2 3 4 5"));
+```
+
+<div id="34" />
+
+### 문제 34 : sort 구현하기
+
+민주는 체육부장으로 체육시간이 되면 반 친구들이 제대로 키 순서대로 모여있는지를 확인해야 한다.
+
+그런데 요즘 민주는 그것이 너무 번거롭게 느껴져 한 번에 확인하고 싶어한다.
+
+민주를 위해 키가 주어지면 순서대로 섰는지 확인하는 프로그램을 작성해보자.
+
+```js
+const result = (str) =>
+  str
+    .split(" ")
+    .sort((a, b) => a - b)
+    .join(" ") === str
+    ? "Yes"
+    : "No";
+
+console.log(result("155 156 166 169 175 176"));
+```
+
+<div id="35" />
+
+### 문제 35 : factory 함수 사용하기
+
+2제곱, 3제곱, 4제곱을 할 수 있는 Factory 함수를 만들려고 합니다.
+
+\<pass>에 코드를 작성하여 two함수를 완성하세요
+
+```js
+function one(n) {
+  function two(m) {
+    //pass
+    return m ** n;
+    //pass
+  }
+  return two;
+}
+
+const a = one(2);
+const b = one(3);
+const c = one(4);
+
+console.log(a(10));
+console.log(b(10));
+console.log(c(10));
+```
+
+<div id="36" />
+
+### 문제 36: 구구단 출력하기
+
+1~9까지의 숫자 중 하나를 입력하면 그 단의 구구단 결과를 한 줄에 출력하는 프로그램을 작성하세요.
+
+```js
+const result = (n) => {
+  let output = "";
+  for (let i = 1; i < 10; i++) {
+    output = output + n * i + " ";
+  }
+  return output;
+};
+
+console.log(result(2));
+```
+
+<div id="" />
+
+### 문제 37: 반장선거
+
+새 학기를 맞아 호준이네 반은 반장 선거를 하기로 했습니다. 그런데 표를 하나씩 개표하는 과정이 너무 번거롭게 느껴진 당신은 학생들이 뽑은 후보들을 입력받으면 뽑힌 학생의 이름과 받은 표 수를 출력하는 프로그램을 작성하기로 하였습니다.
+
+```js
+const result = (str) => {
+  const output = {};
+  str.split(" ").map((item) => {
+    if (output.hasOwnProperty(item)) {
+      output[item] += 1;
+    } else {
+      output[item] = 1;
+    }
+  });
+  const winner = Object.keys(output).reduce((acc, cur) =>
+    output[acc] > output[cur] ? acc : cur
+  );
+
+  return `${winner}(이)가 총 ${output[winner]}표로 반장이 되었습니다.`;
+};
+
+console.log(result("원범 원범 혜원 혜원 혜원 혜원 유진 유진"));
+```
+
+<div id="38" />
+
+### 문제 38: 호준이의 아르바이트
+
+호준이는 아르바이트로 영어 학원에서 단어 시험지를 채점하는 일을 하고 있다. 호준이가 일하는 학원은 매번 1위부터 3위까지의 학생에게 상으로 사탕을 준다. 그런데 오늘은 마침 사탕이 다 떨어져서 호준이가 채점을 하고 점수를 보내면, 당신이 아이들의 숫자만큼 사탕을 사러 가기로 했다.
+1위 ~ 3위 학생은 여러명일 수 있고 1~3위 학생 중 중복되는 학생까지 포함하여 사탕을 사기로 한다.
+**학생들의 점수를 공백으로 구분하여 입력을 받고 사탕을 받을 학생의 수를 출력하세요.**
+
+```js
+const result = (str) => {
+  let ott = 0;
+  let count = 0;
+  str
+    .split(" ")
+    .sort((a, b) => a - b)
+    .reverse()
+    .reduce((acc, cur) => {
+      if (ott < 3) {
+        if (acc === cur) {
+          count += 1;
+          return acc;
+        } else {
+          count += 1;
+          ott += 1;
+          return cur;
+        }
+      }
+    });
+  return count;
+};
+console.log(result("97 86 75 66 55 97 85 97"));
+```
+
+<div id="39" />
+
+### 문제 39 : 오타 수정하기
+
+혜원이는 프로그램을 돌려 재빠르게 모든 q를 e로 바꾸는 프로그램을 작성하려고 합니다. 문장이 입력되면 모든 q를 e로 바꾸는 프로그램을 작성해 주세요.
+
+```js
+const result = (str) => {
+  const arr = str.split("");
+  console.log(arr);
+  while (arr.indexOf("q") !== -1) {
+    arr[arr.indexOf("q")] = "e";
+  }
+
+  return arr.join("");
+};
+
+console.log(result("hqllo my namq is hyqwon"));
+```
+
+모범답안
+
+```js
+//1. 함수 사용
+const word = prompt("입력하세요.");
+
+function replaceAll(str, searchStr, replaceStr) {
+  return str.split(searchStr).join(replaceStr);
+}
+
+console.log(replaceAll(word, "q", "e"));
+
+//2. 정규식 사용
+const word = prompt("입력하세요.");
+
+console.log(word.replace(/q/gi, "e"));
+```
+
+<div id="40" />
+
+### 문제 40 : 놀이동산에 가자
+
+테마파크에 온 원범이와 친구들은 놀이기구를 타려고 합니다. 모든 놀이기구는 한번에 타는 인원수에는 제한이 없지만 제한 무게를 넘으면 무조건 다음 기구를 타야 합니다.
+
+원범이와 친구들이 총 몇 명 탈 수 있는지 알 수 있는 프로그램을 작성해 주세요.
+
+첫번째 입력으로 제한 무게가 주어지고 두번째 입력으로는 함께한 친구들의 수 n이 주어집니다.
+그 다음 차례대로 탑승할 친구들의 몸무게가 주어집니다. 몸무게는 무작위로 주어집니다.
+
+```js
+function result(x, y) {
+  if (arguments.length - 2 !== y) {
+    return "error";
+  }
+  let total = 0;
+  for (let i = 3; i < 3 + y; i++) {
+    total += arguments[i];
+    if (total + arguments[i] >= x) return i - 2;
+  }
+  return arguments.length - 2;
+}
+
+console.log(result(50, 5, 20, 20, 20, 20, 20));
 ```
