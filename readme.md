@@ -45,6 +45,24 @@
 <a href="#30">30. 문자열 속 문자 찾기</a><br/>
 <a href="#31">31. 자바스크립트 자료형의 복잡도</a><br/>
 <a href="#32">32. 문자열 만들기</a><br/>
+<a href="#33">33. 거꾸로 출력하기</a><br/>
+<a href="#34">34. sort 구현하기</a><br/>
+<a href="#35">35. factory 함수 사용하기</a><br/>
+<a href="#36">36. 구구단 출력하기</a><br/>
+<a href="#37">37. 반장선거</a><br/>
+<a href="#38">38. 호준이의 아르바이트</a><br/>
+<a href="#39">39. 오타 수정하기</a><br/>
+<a href="#40">40. 놀이동산에 가자</a><br/>
+<a href="#41">41. 소수판별</a><br/>
+<a href="#42">42. 2020년</a><br/>
+<a href="#43">43. 10진수를 2진수로</a><br/>
+<a href="#44">44. 각 자리수의 합</a><br/>
+<a href="#45">45. getTime()함수 사용하기</a><br/>
+<a href="#46">46. 각 자리수의 합 2</a><br/>
+<a href="#47">47. set 자료형의 응용</a><br/>
+<a href="#48">48. 대소문자 바꿔서 출력하기</a><br/>
+<a href="#49">49. 최댓값 구하기</a><br/>
+<a href="#50">50. 버블정렬 구현하기</a><br/>
 
 <div id="1" />
 
@@ -793,4 +811,279 @@ function result(x, y) {
 }
 
 console.log(result(50, 5, 20, 20, 20, 20, 20));
+```
+
+<div id="41" />
+
+### 문제 41 : 소수판별
+
+숫자가 주어지면 **소수인지 아닌지 판별하는 프로그램**을 작성해주세요.
+소수이면 YES로, 소수가 아니면 NO로 출력해주세요.
+(소수 : 1과 자기 자신만으로 나누어떨어지는 1보다 큰 양의 정수)
+
+```js
+const result = (num) => {
+  if (num == 1) return "No";
+  for (let i = 2; i < num; i++) {
+    if (num % i == 0) return "No";
+  }
+  return "Yes";
+};
+
+console.log(result(19));
+```
+
+<div id="42" />
+
+### 문제 42 : 2020년
+
+2020년 1월 1일은 수요일입니다. 2020년 a월 b일은 무슨 요일일까요?
+두 수 a, b를 입력받아 2020년 a월 b일이 무슨 요일인지 리턴하는 함수 solution을 완성하세요.
+요일의 이름은 일요일부터 토요일까지 각각 SUN, MON, TUE, WED, THU, FRI, SAT 입니다.
+
+예를 들어 a = 5, b = 24라면 5월 24일은 일요일이므로 문자열 "SUN"를 반환하세요.
+
+제한 조건
+2020년은 윤년입니다.
+2020년 a월 b일은 실제로 있는 날입니다.
+(13월 26일이나 2월 45일 같은 날짜는 주어지지 않습니다.)
+
+```js
+const arr = ["WED", "THU", "FRI", "SAT", "SUN", "MON", "TUE"];
+
+const days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+const result = (a, b) => {
+  let countDay = b;
+  for (let i = 0; i < a - 1; i++) {
+    countDay += days[i];
+  }
+
+  return arr[(countDay % 7) - 1];
+};
+
+console.log(result(5, 24));
+
+// 모범답안 day를 이용한다
+
+const month = prompt("월을 입력하세요.");
+const date = prompt("일을 입력하세요.");
+
+function solution(a, b) {
+  const day = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
+  const x = new Date("2020-" + a + "-" + b);
+  return day[x.getDay()];
+}
+console.log(solution(month, date));
+```
+
+<div id="43" />
+
+### 문제43 : 10진수를 2진수로
+
+우리가 흔히 사용하는 숫자 1, 8, 19, 28893 등등...은 10진수 체계입니다.
+이를 컴퓨터가 알아 들을 수 있는 2진수로 바꾸려고 합니다. 어떻게 해야할까요?
+
+**사용자에게 숫자를 입력받고 이를 2진수를 바꾸고 그 값을 출력해주세요.**
+
+```js
+const result = (num) => num.toString(2);
+
+console.log(result(3));
+
+// 직접 구하신듯
+let a = prompt("10진수를 입력해주세요.");
+let b = [];
+let result = "";
+
+while (a) {
+  b.push(a % 2);
+  a = parseInt(a / 2, 10);
+}
+b.reverse();
+
+b.forEach((n) => {
+  result += n;
+});
+
+console.log(result);
+```
+
+<div id="44" />
+
+### 문제44 : 각 자리수의 합
+
+사용자가 입력한 양의 정수의 각 자리수의 합을 구하는 프로그램을 만들어주세요
+
+예를들어
+18234 = 1+8+2+3+4 이고 정답은 18 입니다.
+3849 = 3+8+4+9 이고 정답은 24입니다.
+
+```js
+const result = (num) => {
+  const arr = (num + "").split("");
+  return arr.reduce((acc, cur) => {
+    acc += cur * 1;
+    return acc;
+  }, 0);
+};
+
+console.log(result(18234));
+```
+
+<div id="45" />
+
+### 문제45 : getTime()함수 사용하기
+
+Date객체의 메소드 중 하나인 getTime()은 1970년 1월 1일 0시 0분 0초 이후로부터 지금까지 흐른 시간을 천분의 1초 단위(ms)로 반환합니다.
+
+이를 이용하여 현재 연도(2019)를 출력해보세요.
+
+```js
+const x = new Date();
+
+console.log(parseInt(x.getTime() / (1000 * 60 * 60 * 24 * 365)) + 1970);
+```
+
+<div id="46" />
+
+### 문제46 : 각 자리수의 합 2
+
+1부터 20까지의(20을 포함) 모든 숫자를 일렬로 놓고 모든 자릿수의 총 합을 구하세요.
+
+예를 들어 10부터 15까지의 모든 숫자를 일렬로 놓으면 101112131415이고
+각 자리의 숫자를 더하면 21입니다. (1+0+1+1+1+2+1+3+1+4+1+5 = 21)
+
+```js
+const result = (a, b) => {
+  let str = "";
+  for (let i = a; i <= b; i++) {
+    str += i;
+  }
+
+  return str.split("").reduce((acc, cur) => {
+    acc += cur * 1;
+    return acc;
+  }, 0);
+};
+
+console.log(result(10, 20));
+```
+
+<div id="47" />
+
+### 문제47 : set 자료형의 응용
+
+바울랩에서는 3월 29일 제주대학교에서 '제주 빅데이터 사회혁신 해커톤' 행사를 주최하게 되었습니다. 이에 구글 설문지를 배포하였으나 제주대학생들이 중복해서 n개씩 설문지를 제출하였습니다.
+중복된 데이터들을 삭제하여 실제 접수 명단이 몇 명인지 알고 싶습니다.
+
+아래 주어진 데이터들로부터 중복을 제거하여 실제 접수 인원을 출력해 주세요.
+
+```js
+const people = {
+  이호준: "01050442903",
+  이호상: "01051442904",
+  이준호: "01050342904",
+  이호준: "01050442903",
+  이준: "01050412904",
+  이호: "01050443904",
+  이호준: "01050442903",
+};
+
+const result = (obj) => {
+  let result = new Set();
+  for (let key in obj) result.add(people[key]);
+  return result.size;
+};
+
+console.log(result(people));
+```
+
+<div id="48" />
+
+### 문제48 : 대소문자 바꿔서 출력하기
+
+문자열이 주어지면 대문자와 소문자를 바꿔서 출력하는 프로그램을 작성하세요.
+
+```js
+const result = (str) => {
+  let change = "";
+  str.split("").map((item, idx) => {
+    if (item.toUpperCase() === item) {
+      change += item.toLowerCase();
+    } else {
+      change += item.toUpperCase();
+    }
+  });
+  return change;
+};
+
+console.log(result("AAABBBcccddd"));
+```
+
+<div id="49" />
+
+### 문제 49 : 최댓값 구하기
+
+순서가 없는 10개의 숫자가 공백으로 구분되어 주어진다. 주어진 숫자들 중 최댓값을 반환하라
+
+```js
+const result = (str) => {
+  const arr = str.split(" ").map((v, i, arr) => {
+    return v * 1;
+  });
+  const max = arr.reduce((acc, cur) => {
+    return acc > cur ? acc : cur;
+  }, 0);
+  return max;
+};
+
+console.log(result("10 9 8 7 6 5 4 3 2 1 100"));
+
+// sort로 뽑는게 더 쉬운것 같다.
+let numbers = prompt("10개의 숫자를 입력하세요")
+  .split(" ")
+  .map((n) => {
+    return parseInt(n, 10);
+  });
+
+numbers.sort((a, b) => {
+  return b - a;
+});
+
+console.log(numbers[0]);
+```
+
+<div id="50" />
+
+### 문제50 : 버블정렬 구현하기
+
+버블정렬은 두 인접한 원소를 검사하여 정렬하는 방법을 말합니다. 시간 복잡도는 느리지만 코드가 단순하기 때문에 자주 사용됩니다. 아래 코드의 빈 칸을 채워 버블 정렬을 완성해 봅시다.
+
+```js
+function bubble(arr) {
+  let result = arr.slice();
+
+  for (let i = 0; i < result.length - 1; i++) {
+    for (let j = 0; j < result.length - i; j++) {
+      /*빈칸을 채워주세요.*/
+      if (result[j] > result[j + 1]) {
+        //빈칸을 채워주세요.
+        let temp = result[j];
+        result[j] = result[j + 1];
+        result[j + 1] = temp;
+      }
+    }
+  }
+  return result;
+}
+
+const items = prompt("입력해주세요.")
+  .split(" ")
+  .map((n) => {
+    return parseInt(n, 10);
+  });
+
+console.log(bubble(items));
 ```
