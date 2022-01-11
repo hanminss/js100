@@ -1295,3 +1295,177 @@ hanoi(3, "A", "B", "C");
 console.log(route);
 console.log(route.length);
 ```
+
+<div id="56" />
+
+### 문제 56 : 객체의 함수 응용
+
+다음의 객체가 주어졌을 때 한국의 면적과 가장 비슷한 국가와 그 차이를 출력하세요.
+
+```js
+데이터
+nationWidth = {
+     'korea': 220877,
+     'Rusia': 17098242,
+     'China': 9596961,
+     'France': 543965,
+     'Japan': 377915,
+     'England' : 242900,
+}
+
+출력
+England 22023
+```
+
+```js
+const obj = {
+  korea: 220877,
+  Rusia: 17098242,
+  China: 9596961,
+  France: 543965,
+  Japan: 377915,
+  England: 242900,
+};
+
+const result = (obj) => {
+  const entries = Object.entries(obj);
+  const values = Object.values(obj);
+  const value = values[0];
+  let temp = 999999999999;
+  let idx = 0;
+
+  for (let i = 1; i < values.length; i++) {
+    if (Math.abs(values[i] - value) < Math.abs(temp - value)) {
+      temp = values[i];
+      idx = i;
+    }
+    console.log(i);
+  }
+  console.log(entries[idx][0]);
+};
+
+result(obj);
+```
+
+<div id="57" />
+
+### 문제 57 : 1의 개수
+
+0부터 1000까지 1의 개수를 세는 프로그램을 만들려고 합니다. 예를 들어 0부터 20까지 1의 개수를 세어본다면 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19에 각각 1이 들어가므로 12개의 1이 있게 됩니다. 11은 1이 2번 들어간 셈이죠.
+
+그렇다면 0부터 1000까지의 수에서 1은 몇 번이나 들어갔을까요? 출력해 주세요.
+
+```js
+const result = () => {
+  let count = 0;
+  for (let i = 0; i < 1001; i++) {
+    (i + "").split("").map((item) => {
+      if (item == 1) count++;
+    });
+  }
+
+  return count;
+};
+
+console.log(result());
+```
+
+<div id="58" />
+
+### 문제58 : 콤마 찍기
+
+원범이는 편의점 아르바이트가 끝난 후 정산을 하고자 합니다.
+정산을 빨리하고 집에 가고 싶은 원범이는 프로그램을 만들려고 합니다.
+
+숫자를 입력받고 천 단위로 콤마(,)를 찍어주세요.
+
+예를 들어, 123456789를 입력받았으면 123,456,789를 출력해야 합니다.
+
+```js
+const result = (num) => {
+  const x = (num + "").split("").reverse(); // 6
+  let count =
+    x.length % 3 == 0 ? parseInt(x.length / 3) - 1 : parseInt(x.length / 3);
+
+  for (let i = 1; i <= count; i++) {
+    x.splice(3 * i + (i - 1), 0, ",");
+  }
+  console.log(x.reverse().join(""));
+};
+result(1234567899);
+```
+
+<div id="59" />
+
+### 문제 59 : 빈칸채우기
+
+총 문자열의 길이는 50으로 제한하고 사용자가 문자열을 입력하면 그 문자열을 가운데 정렬을 해주고, 나머지 빈 부분에는 '='을 채워 넣어주세요.
+
+```js
+const result = (str) => {
+  const results = str.padStart(25 + parseInt(str.length / 2), "=");
+  return results.padEnd(50, "=");
+};
+
+console.log(result("hizzzzzzzz"));
+```
+
+<div id="" />
+
+###
+
+```js
+
+```
+
+<div id="" />
+
+### 문제60 : 번호 매기기
+
+새 학기가 되어 이름을 가나다 순서대로 배정하고 번호를 매기려고 합니다.
+데이터에 입력된 이름을 아래와 같이 출력해 주세요.
+
+```js
+데이터
+students = ['강은지','김유정','박현서','최성훈','홍유진','박지호','권윤일','김채리','한지호','김진이','김민호','강채연']
+
+
+출력
+번호: 1, 이름: 강은지
+번호: 2, 이름: 강채연
+번호: 3, 이름: 권윤일
+번호: 4, 이름: 김민호
+번호: 5, 이름: 김유정
+번호: 6, 이름: 김진이
+번호: 7, 이름: 김채리
+번호: 8, 이름: 박지호
+번호: 9, 이름: 박현서
+번호: 10, 이름: 최성훈
+번호: 11, 이름: 한지호
+번호: 12, 이름: 홍유진
+```
+
+```js
+const arr = [
+  "강은지",
+  "김유정",
+  "박현서",
+  "최성훈",
+  "홍유진",
+  "박지호",
+  "권윤일",
+  "김채리",
+  "한지호",
+  "김진이",
+  "김민호",
+  "강채연",
+];
+
+const result = (arr) => {
+  arr.map((item, idx) => {
+    console.log(`번호: ${idx + 1}, 이름: ${item}`);
+  });
+};
+
+result(arr);
+```
