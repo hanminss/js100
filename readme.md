@@ -73,6 +73,16 @@
 <a href="#58">58. 콤마 찍기</a><br/>
 <a href="#59">59. 빈칸 채우기</a><br/>
 <a href="#60">60. 번호 매기기</a><br/>
+<a href="#61">61. 문자열 압축하기</a><br/>
+<a href="#62">62. 20190923출력하기</a><br/>
+<a href="#63">63. 친해지고 싶어 </a><br/>
+<a href="#64">64. 이상한 엘레베이터</a><br/>
+<a href="#65">65. 변형된 리스트</a><br/>
+<a href="#66">66. </a><br/>
+<a href="#67">67. </a><br/>
+<a href="#68">68. </a><br/>
+<a href="#69">69. </a><br/>
+<a href="#70">70. </a><br/>
 
 <div id="1" />
 
@@ -1602,6 +1612,212 @@ const result = (a, b) => {
     arr.push([a[i], b[i]]);
   }
   return arr;
+};
+
+console.log(result(a, b));
+```
+
+<div id="66" />
+
+### 문제 66 : 블럭탑쌓기
+
+탑을 쌓기 위해 각 크기별로 준비된 블럭들을 정해진 순서에 맞게 쌓아야 합니다.
+순서에 맞게 쌓지 않으면 무너질 수 있습니다.
+
+예를 들면 정해진 순서가 BAC 라면 A 다음 C가 쌓아져야 합니다.
+선행으로 쌓아야 하는 블럭이 만족된 경우라면 탑이 무너지지 않습니다.
+
+- B를 쌓지 않아도 A와 C를 쌓을 수 있습니다.
+- B 다음 블럭이 C가 될 수 있습니다.
+
+쌓아져 있는 블럭 탑이 순서에 맞게 쌓아져 있는지 확인하세요.
+
+1. 블럭은 알파벳 대문자로 표기합니다.
+2. 규칙에 없는 블럭이 사용될 수 있습니다.
+3. 중복된 블럭은 존재하지 않습니다.
+
+```js
+입력;
+탑 = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
+규칙 = "ABD";
+
+출력[("가능", "불가능", "가능", "가능", "가능")];
+```
+
+```js
+const arr = ["ABCDEF", "BCAD", "ADEFQRX", "BEDFG", "EFGHZ"];
+
+const result = (arr, role) => {
+  return arr.map((item) => {
+    const exist = role.split("").map((i) => {
+      return item.indexOf(i);
+    });
+    let flag = true;
+    exist.reduce((acc, cur) => {
+      if (acc == -1 || cur == -1) {
+        return cur;
+      }
+      if (acc > cur) {
+        flag = false;
+      }
+      return cur;
+    }, -1);
+    return flag ? "가능" : "불가능";
+  });
+};
+
+console.log(result(arr, "ABD"));
+```
+
+<div id="67" />
+
+### 문제 67 : 민규의 악수
+
+광장에서 모인 사람들과 악수를 하는 행사가 열렸습니다.
+참가자인 민규는 몇명의 사람들과 악수를 한 후 중간에 일이 생겨 집으로 갔습니다.
+
+이 행사에서 진행된 악수는 총 n번이라고 했을 때,
+민규는 몇 번의 악수를 하고 집으로 돌아갔을까요?
+그리고 민규를 포함한 행사 참가자는 몇 명일까요?
+
+- 악수는 모두 1대 1로 진행이 됩니다.
+- 민규를 제외한 모든 참가자는 자신을 제외한 참가자와 모두 한번씩 악수를 합니다.
+- 같은 상대와 중복된 악수는 카운트 하지 않습니다.
+- 민규를 제외한 참가자는 행사를 모두 마쳤습니다.
+
+예를들어 행사에서 59회의 악수가 진행되었다면 민규는 4번의 악수를 하였고 민규를 포함한 참가자는 12명이다.
+
+행사에서 진행된 악수 횟수(n)를 입력으로 받으면 민규의 악수 횟수와 행사 참가자 수가 출력됩니다.
+
+```js
+const result = (num) => {
+  let people = 0;
+  let sh = 0;
+  let temp = 0;
+
+  while (true) {
+    sh = parseInt((people * (people - 1)) / 2);
+    if (num <= sh) {
+      break;
+    }
+    temp = sh;
+    people += 1;
+  }
+  return [num - temp, people];
+};
+
+console.log(result(59));
+```
+
+<div id="68" />
+
+### 문제 68 : 버스 시간표
+
+학교가 끝난 지원이는 집에 가려고 합니다. 학교 앞에 있는 버스 시간표는 너무 복잡해서 버스 도착시간이 몇 분 남았는지 알려주는 프로그램을 만들고 싶습니다.
+
+버스 시간표와 현재 시간이 주어졌을 때 버스 도착 시간이 얼마나 남았는지 알려주는 프로그램을 만들어주세요.
+
+- 버스 시간표와 현재 시간이 입력으로 주어집니다.
+- 출력 포맷은 "00시 00분"입니다.
+  만약 1시간 3분이 남았다면 "01시간 03분"으로 출력해야 합니다.
+- 버스 시간표에 현재 시간보다 이전인 버스가 있다면 "지나갔습니다."라고 출력합니다.
+
+```js
+const timeArr = ["12:30", "13:20", "14:13"];
+
+const result = (arr, now) => {
+  const nowTime = now.split(":").map((i) => i * 1);
+  const arrStr = arr.map((item) => {
+    return item.split(":").map((i) => i * 1);
+  });
+
+  return arrStr.map((item) => {
+    if (item[0] < nowTime[0] || (item[0] == nowTime[0] && item[1] < nowTime[1]))
+      return "지나갔습니다.";
+    let leftH = item[0] - nowTime[0];
+    let leftM = item[1] - nowTime[1];
+    if (leftM < 0) {
+      leftH = leftH - 1;
+      leftM = 60 + leftM;
+    }
+    return `${leftH < 10 ? "0" + leftH : leftH}시 ${
+      leftM < 10 ? "0" + leftM : leftM
+    }분`;
+  });
+};
+
+console.log(result(timeArr, "12:40"));
+```
+
+<div id="69" />
+
+### 문제 69 : 골드바흐의 추측
+
+골드바흐의 추측(Goldbach's conjecture)은 오래전부터 알려진 정수론의 미해결 문제로, 2보다 큰 모든 짝수는 두 개의 소수(Prime number)의 합으로 표시할 수 있다는 것이다. 이때 하나의 소수를 두 번 사용하는 것은 허용한다. - 위키백과
+
+위 설명에서 2보다 큰 모든 짝수를 두 소수의 합으로 나타낸 것을 골드바흐 파티션이라고 합니다.
+
+예)
+100 == 47 + 53
+56 == 19 + 37
+
+2보다 큰 짝수 n이 주어졌을 때, 골드바흐 파티션을 출력하는 코드를 작성하세요.
+
+- 해당 문제의 출력 형식은 자유롭습니다. 가능하시다면 골드바흐 파티션 모두를 출력하거나, 그 차가 작은 것을 출력하거나 그 차가 큰 것 모두 출력해보세요.
+
+```js
+const result = (num) => {
+  for (let i = 2; i < num; i++) {
+    for (let j = i; j < num; j++) {
+      if (i + j == num) {
+        if (isPrime(i) && isPrime(j)) {
+          console.log(`${i}+${j}=${i + j}`);
+        }
+      }
+    }
+  }
+};
+
+const isPrime = (num) => {
+  if (num <= 1) return false;
+  for (let i = 2; i < num; i++) {
+    if (num % i == 0) return false;
+  }
+  return true;
+};
+
+result(100);
+```
+
+<div id="70" />
+
+### 문제 70 : 행렬 곱하기
+
+행렬 2개가 주어졌을 때 곱할 수 있는 행렬인지 확인하고 곱할 수 있다면 그 결과를 출력하고,
+곱할 수 없다면 -1을 출력하는 프로그램을 만들어주세요.
+
+```js
+const a = [
+  [1, 2],
+  [2, 4],
+];
+
+const b = [
+  [1, 0],
+  [0, 3],
+];
+
+const result = (a, b) => {
+  if (a[0].length != b.length) return -1;
+  const results = [];
+  for (let i = 0; i < a.length; i++) {
+    const item = [];
+    for (let j = 0; j < b.length; j++) {
+      item.push(a[i][0] * b[j][0] + a[i][1] * b[j][1]);
+    }
+    results.push(item);
+  }
+  return results;
 };
 
 console.log(result(a, b));
